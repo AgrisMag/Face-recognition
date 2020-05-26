@@ -9,10 +9,6 @@ import ImageLinkForm from './components/imageLinkForm/ImageLinkForm';
 import Rank from './components/rank/Rank';
 import Particles from 'react-particles-js';
 
-const app = new Clarifai.App({
-  apiKey: '4b7931c807d2437398d8ebb2cc8aaff6'
-});
-
 const particlesOptions = {
   particles: {
     number: {
@@ -82,7 +78,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('http://localhost:3030/imageurl', {
+    fetch('https://limitless-lowlands-30956.herokuapp.com/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -92,7 +88,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3030/image', {
+          fetch('https://limitless-lowlands-30956.herokuapp.com/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
